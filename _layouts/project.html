@@ -1,0 +1,38 @@
+---
+layout: default
+---
+<h1>{{ page.name }}</h1>
+<div class="project">
+  <div class="lead">
+    {% for lead in page.lead %}
+      <p><span>{{ lead.name }}:</span> {{ lead.content }}</p>
+    {% endfor %}
+  </div>
+
+  <div class="content">
+    <div class="responsibility">
+      <h3>Our responsibility</h3>
+      <ul>
+        {% for responsiblity in page.responsibilities %}
+          <li>{{ responsiblity }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="features">
+      <h3>Key features build</h3>
+      <ul>
+        {% for feature in page.features %}
+          <li>{{ feature }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="images">
+    {% for index in (1..page.images_count) %}
+    <a rel="stringwire" class="gallery cboxElement" href="/images/portfolio/{{ page.slug }}-{{ index }}.jpg">
+      <img width="300px" src="/images/portfolio/{{ page.slug }}-{{ index }}-small.jpg" alt="Stringwire 1">
+    </a>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,25 @@
+-
+  name: 'home'
+  title: 'Home'
+  description: 'Welcome!'
+  url: '/'
+-
+  name: 'services'
+  title: 'Services'
+  description: 'For you'
+  url: '/services/'
+-
+  name: 'portfolio'
+  title: 'Portfolio'
+  description: 'Our clients'
+  url: '/projects/'
+-
+  name: 'contact'
+  title: 'Contact'
+  description: 'Our address'
+  url: '/contact/'
+-
+  name: 'news'
+  title: 'Blog'
+  description: 'Fresh'
+  url: '/posts/'

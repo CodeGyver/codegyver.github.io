@@ -1,0 +1,20 @@
+---
+---
+<h1>Projects we made</h1>
+<p class="lead">Click on the image to see more.</p>
+<ul class="portfolio">
+  {% assign projects = site.projects | sort: 'position' | reverse %}
+  {% for project in projects %}
+    <li>
+      <h2>
+        <a href="/projects/{{ project.slug }}/">{{ project.name }}</a>
+      </h2>
+      <p class="image">
+        <a href="/projects/{{ project.slug }}/">
+          <img src="/images/portfolio/{{project.slug}}-logo.png" alt="{{ project.name }}" />
+        </a>
+      </p>
+      <p class="text">{{ project.description }}</p>
+    </li>
+  {% endfor %}
+</ul>
