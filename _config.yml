@@ -44,6 +44,7 @@ defaults:
       type: projects
     values:
       layout: project
+      nav: projects
 include: ['_pages']
 sass:
   sass_dir: 'css/vendor'

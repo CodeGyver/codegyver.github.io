@@ -2,9 +2,8 @@
   <div class="wrapper">
     <a id="logo" href="/"><img src="/images/logo.png" alt="Logo"></a>
     <nav>
-      {% assign url = page.url | replace: '.html', '/' %}
       {% for nav in site.data.nav %}
-      <a id="{{ nav['name'] }}_link" href="{{ nav['url'] }}" {% if url == nav['url'] %}class="current"{% endif %}>
+      <a id="{{ nav['name'] }}_link" href="{{ nav['url'] }}" {% if page.nav == nav['name'] %}class="current"{% endif %}>
           <em>{{ nav['title'] }}</em>
           <span>{{ nav['description'] }}</span>
           <span class="icon"></span>

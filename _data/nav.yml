@@ -9,7 +9,7 @@
   description: 'For you'
   url: '/services'
 -
-  name: 'portfolio'
+  name: 'projects'
   title: 'Portfolio'
   description: 'Our clients'
   url: '/projects'
@@ -19,7 +19,7 @@
   description: 'Our address'
   url: '/contact'
 -
-  name: 'news'
+  name: 'posts'
   title: 'Blog'
   description: 'Fresh'
   url: '/posts'
