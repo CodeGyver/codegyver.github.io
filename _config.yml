@@ -1,6 +1,6 @@
 ---
 # Setup
-baseurl: /
+baseurl: ''
 markdown: redcarpet
 highlighter: pygments
 permalink: pretty
@@ -19,12 +19,8 @@ sass:
 title: Codegyver
 tagline: Personal blog
 description: Personal blog
-url: http://hyde.getpoole.com
+url: http://codegyver.com
 author:
   name: Zbigniew Pieślak
   url: http://codegyver.com
-
 paginate: 5
-
-# Custom vars
-version: 2.1.0
