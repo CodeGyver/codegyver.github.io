@@ -1,67 +1,37 @@
 ---
-layout: home
-nav: home
+layout: default
+title: Home
 ---
-<div id="features">
-  <section>
-    <header>
-      <span><em>A</em></span>
-      <span class="text">High Quality</span>
-    </header>
-    <p>We know your time is valuable, so we deilver only optimized and well tested code.</p>
-  </section>
 
-  <section>
-    <header>
-      <span><em>B</em></span>
-      <span class="text">Performance</span>
-    </header>
-    <p>We look for the best performance solutions so your code can run smoothly.</p>
-  </section>
+<div class="posts">
+  {% for post in paginator.posts %}
+  <div class="post">
+    <h1 class="post-title">
+      <a href="{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h1>
 
-  <section>
-    <header>
-      <span><em>C</em></span>
-      <span class="text">Time</span>
-    </header>
-    <p>We meet your deadlines without compromising quality.</p>
-  </section>
+    <span class="post-date">{{ post.date | date_to_string }}</span>
 
-  <section>
-    <header>
-      <span><em>D</em></span>
-      <span class="text">Best Practices</span>
-    </header>
-    <p>We are experienced Ruby on Rails developers. We use only verified and effective programming patterns.</p>
-  </section>
+    {{ post.content }}
+  </div>
+  {% endfor %}
 </div>
 
-<div id="info">
-  <section id="intro">
-    <header>
-      <h1>Welcome!</h1>
-    </header>
-    <p class="image"><img src="/images/home.jpg" alt="Home"></p>
-    <p class="lead">CodeGyver is professional software development company based in Poland. We specialize in programming web applications.</p>
-    <p>In our daily work we use the excellent Ruby on Rails (RoR) framework with the newest web technologies: HTML5, CSS3, Jquery, Backbone.js. Our programmers are top professionals with many open source contributions.</p>
-    <p>If you want an online application, website or ecommerce solution for your business, you are in the right place! You can <a href="/contact">contact us here</a></p>
-  </section>
-
-  <section id="testimonials">
-    <header>
-      <h1>Testimonials</h1>
-    </header>
-    <div id="slider">
-      <ul>
-        {% for testimonial in site.data.testimonials %}
-          <li>
-            <blockquote>
-              <p>{{ testimonial.content }}</p>
-            </blockquote>
-            <p class="author"><strong>{{ testimonial.author }}</strong> {{ testimonial.company }}</p>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </section>
+<div class="pagination">
+  {% if paginator.next_page %}
+    <a class="pagination-item older" href="{{ site.baseurl }}page{{paginator.next_page}}">Older</a>
+  {% else %}
+    <span class="pagination-item older">Older</span>
+  {% endif %}
+  {% if paginator.previous_page %}
+    {% if paginator.page == 2 %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}">Newer</a>
+    {% else %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}page{{paginator.previous_page}}">Newer</a>
+    {% endif %}
+  {% else %}
+    <span class="pagination-item newer">Newer</span>
+  {% endif %}
 </div>

@@ -1,40 +1,30 @@
 ---
-title: Professional Ruby on Rails development & consulting | CodeGyver
-email: contact@codegyver.com
-description: >
-  CodeGyver is professional Ruby on Rails (RoR) development and
-  consulting company based in Poland. We built internet startups and
-  with excellent Ruby on Rails framework and newest technologies
-  (HTML5, CSS3, Javascript).  Write an awesome description for your new site here.
-keywords: ruby on rails development, ruby on rails consulting, ruby, rails, ror, web development, company
-baseurl: ''
-url: http://codegyver.com
-twitter_username: jekyllrb
-github_username: jekyll
-
-# Build settings
-markdown: kramdown
-theme: minima
-plugins:
-  - jekyll-feed
+# Setup
+baseurl: /
+markdown: redcarpet
+highlighter: pygments
+permalink: pretty
 exclude:
+  - .git
+  - .jekyll-cache
   - Gemfile
   - Gemfile.lock
-defaults:
-  -
-    scope:
-      path: ''
-    values:
-      layout: default
-  - scope:
-      type: projects
-    values:
-      layout: project
-      nav: projects
-include: [_pages]
+  - LICENSE.md
+  - README.md
 sass:
   sass_dir: css/vendor
   style: compressed
-collections:
-  projects:
-    output: true
+
+# Data
+title: Codegyver
+tagline: Personal blog
+description: Personal blog
+url: http://hyde.getpoole.com
+author:
+  name: Zbigniew Pieślak
+  url: http://codegyver.com
+
+paginate: 5
+
+# Custom vars
+version: 2.1.0

@@ -1,0 +1,46 @@
+<div class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      <h1>
+        <a href="{{ site.baseurl }}">
+          <img src="/images/avatar.jpg" alt="Home">
+        </a>
+      </h1>
+      <ul class="social">
+        <li>
+          <a href="mailto:&#122;&#112;&#105;&#101;&#115;&#108;&#97;&#107;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">
+            <i class="fas fa-envelope" title="Email"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/zpieslak">
+            <i class="fab fa-github" title="Github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/pieslak">
+            <i class="fab fa-linkedin-in" title="LinkedIn"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}">Home</a>
+
+      {% comment %}
+        The code below dynamically generates a sidebar nav of pages with
+        `layout: page` in the front-matter. See readme for usage.
+      {% endcomment %}
+
+      {% assign pages_list = site.pages %}
+      {% for node in pages_list %}
+        {% if node.title != null %}
+          {% if node.layout == "page" %}
+            <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </nav>
+  </div>
+</div>
