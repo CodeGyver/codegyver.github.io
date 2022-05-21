@@ -22,8 +22,8 @@ plugins:
 title: Codegyver
 tagline: Personal blog
 description: Personal blog
-url: http://codegyver.com
+url: https://codegyver.com
 author:
   name: Zbigniew Pieślak
-  url: http://codegyver.com
+  url: https://codegyver.com
 paginate: 5
