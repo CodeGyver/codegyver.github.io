@@ -1,6 +1,7 @@
 ---
 # Setup
 baseurl: ''
+excerpt_separator: <!--more-->
 markdown: redcarpet
 highlighter: pygments
 permalink: pretty
@@ -14,6 +15,8 @@ exclude:
 sass:
   sass_dir: css/vendor
   style: compressed
+plugins:
+  - jekyll-sitemap
 
 # Data
 title: Codegyver

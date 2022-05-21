@@ -12,6 +12,8 @@ Ghostscript is an excellent interpreter for Postscript and PDf files. It is inst
 
 In this article, I would like to present how to unify multiple Pdfs into one file, create a bookmarks list inside it and add page numbers on each page of the generated document.
 
+<!--more-->
+
 ## Combine files
 
 Firstly let's start with combining Pdfs into one file. It is relatively easy and can be done with the following command:

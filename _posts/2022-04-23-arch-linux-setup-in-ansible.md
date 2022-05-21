@@ -17,6 +17,8 @@ The above solution could work for most cases, but for me, it was a little odd, t
 
 During some research, I found Ansible, which seemed to be a better suited tool. Internally, it uses python and provides some kind of idempotency to the run command. It provides a nice messaging system (for example when command fails or succeed) and is also very well suited for performing server changes or deploys.
 
+<!--more-->
+
 After moving all the commands to ansible setup, the process of recreating personal enviroment is very simple. As on the diagram below:
 
       +----------------------------+       +-----------------------------+
