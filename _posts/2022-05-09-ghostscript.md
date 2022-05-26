@@ -3,16 +3,16 @@ layout: post
 title: Ghostscript
 ---
 
-<p class="message">
-At the time of writing, the current ghostscript version is 9.56.1. Full code described in the article, can be found <a href="https://github.com/zpieslak/scripts/tree/main/gs">here</a>.
-</p>
-
-Ghostscript is an excellent interpreter for Postscript and PDf files. It is installed on almost all modern Linux distributions per default.
+Ghostscript is an excellent interpreter for Postscript and Pdf files. It is installed on almost all modern Linux distributions per default.
 
 
 In this article, I would like to present how to unify multiple Pdfs into one file, create a bookmarks list inside it and add page numbers on each page of the generated document.
 
 <!--more-->
+
+<p class="message">
+At the time of writing, the current ghostscript version is 9.56.1. Full code described in the article, can be found <a href="https://github.com/zpieslak/scripts/tree/main/gs">here</a>.
+</p>
 
 ## Combine files
 

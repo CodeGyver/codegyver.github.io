@@ -3,9 +3,17 @@ layout: post
 title: Arch Linux setup in ansible
 ---
 
+Arch Linux is one of the most flexible Linux distributions available. It virtually allows configuring every part of the system. As a base we receive kernel and systemd, the rest depends on us.
+
+Here, I would like to present my personal Arch Linux setup, written in Ansible. How I was able to automate the system setup and write down any confuguration changes.
+
+<!--more-->
+
 <p class="message">
 The article describes ansible code, which can be found <a href="https://github.com/zpieslak/arch">here</a>
 </p>
+
+## Motiviation
 
 When searching for a reliable and fast system for everyday use, Arch Linux seems to be the best solution for me. It allows installing only the needed components, and its rolling release model brings updates almost instantly.
 
@@ -16,8 +24,6 @@ The other issue, that can arise, is how to store the knowledge. When, for exampl
 The above solution could work for most cases, but for me, it was a little odd, to keep knowledge in multiple places and remember what manual steps needed to be performed. Initially I tried to write a bash script, but I thought that there should be a better solution, and maybe I do not need to reinvent the wheel.
 
 During some research, I found Ansible, which seemed to be a better suited tool. Internally, it uses python and provides some kind of idempotency to the run command. It provides a nice messaging system (for example when command fails or succeed) and is also very well suited for performing server changes or deploys.
-
-<!--more-->
 
 After moving all the commands to ansible setup, the process of recreating personal enviroment is very simple. As on the diagram below:
 

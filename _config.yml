@@ -16,12 +16,12 @@ sass:
   sass_dir: css/vendor
   style: compressed
 plugins:
+  - jekyll-seo-tag
   - jekyll-sitemap
 
 # Data
 title: Codegyver
-tagline: Personal blog
-description: Personal blog
+description: Blog
 url: https://codegyver.com
 author:
   name: Zbigniew Pieślak

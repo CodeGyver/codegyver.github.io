@@ -14,7 +14,13 @@ title: Home
 
     <span class="post-date">{{ post.date | date_to_string }}</span>
 
-    {{ post.content }}
+    {{ post.excerpt }}
+
+    <p><a href="{{ post.url }}">Read more</a></p>
+
+    {% if forloop.index != forloop.length %}
+      <hr>
+    {% endif %}
   </div>
   {% endfor %}
 </div>
