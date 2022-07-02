@@ -5,7 +5,7 @@ title: About
 
 Hey there!
 
-My name is Zbigniew Pieślak. I'm full stack developer / software architect with {{ site.time | date: '%Y' | minus:2008 }} years of experience. I'm based in Poznań, Poland (CET).
+My name is Zbigniew Pieślak. I'm senior software engineer with {{ site.time | date: '%Y' | minus:2008 }} years of experience. I'm based in Poznań, Poland (CET).
 
 My main area of expertise is:
 
@@ -14,7 +14,7 @@ My main area of expertise is:
 * Amazon AWS solutions (design and implementation)
 * SQL and NoSQL Databases (design and implementation)
 * CI / CD pipelines (design and implementation)
-* DevOps tasks (Linux, Bash, Ansible)
+* DevOps tasks (Linux, Bash, Docker, Ansible)
 
 In my free time I like spending it with my family, doing exercises (running, gym) and performing some home repairs.
 

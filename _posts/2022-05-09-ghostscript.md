@@ -99,7 +99,7 @@ Full PostScript reference can be found [here](https://www.adobe.com/jp/print/pos
 
 ## Wrapping up
 
-Taking all of the solutions above, we can create a simple bash script that will take Pdf files as input and output the merged Pdf.
+Taking all the solutions above, we can create a simple bash script that will take Pdf files as input and output the merged Pdf.
 
     #!/bin/bash
 
@@ -133,7 +133,7 @@ Taking all of the solutions above, we can create a simple bash script that will 
         /OUT pdfmark
       "
 
-      # Incrment page number
+      # Increment page number
       PAGE_NUMBER=$(($PAGE_NUMBER + $PAGES_COUNT))
     done
 
