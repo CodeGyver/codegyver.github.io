@@ -12,6 +12,7 @@ exclude:
   - Gemfile.lock
   - LICENSE.md
   - README.md
+  - tmp
 sass:
   sass_dir: css/vendor
   style: compressed
