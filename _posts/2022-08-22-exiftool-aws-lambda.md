@@ -3,7 +3,7 @@ layout: post
 title: Exiftool AWS Lambda
 ---
 
-Exiftool is excellent file metadata parser and analyzer. Internally, it is written in perl and provides a support for variety of file formats.
+Exiftool is file metadata parser and analyzer that handles majority of the formats. Internally, it is written in perl, which gives it some portability.
 
 In this article I will present how to use it in disk and RAM limited environment like AWS Lambda.
 
@@ -15,7 +15,9 @@ The article describes code, which can be found <a href="https://github.com/zpies
 
 ## AWS Lambda
 
-AWS Lambda is Amazon serverless solution, that allows to run arbitrary code in few predefined languages. Internally it is a virtual private server that allows us to define some of its computation resources (like RAM and - indirectly - CPU). Unlike "standard" VPS its purpose is to run per defined event and then tear down. Although managing the Lambda instances is Amazon internal implementation, we can distinguish "cold" and "warm" phases. "Cold" is simple a phase that instance needs to started from scratch. "Warm" on the other hand, re-uses the already running instance (as Lambda are not torn down momentary). As a result, two consecutive runs of AWS Lambda will not last the same time (the second run will be faster - since it uses the "warm" phase).
+AWS Lambda is Amazon serverless solution, that allows to run arbitrary code in few predefined languages. Internally it is a virtual private server that allows us to define some of its computation resources (like RAM and - indirectly - CPU). Unlike "standard" VPS its purpose is to run per defined event and then tear down.
+
+Although managing the Lambda instances is Amazon internal implementation, we can distinguish "cold" and "warm" phases. "Cold" is simple a phase that instance needs to started from scratch. "Warm" on the other hand, re-uses the already running instance (as Lambda are not torn down momentary). As a result, two consecutive runs of AWS Lambda will not last the same time (the second run will be faster - since it uses the "warm" phase).
 
 Because of its purpose (event driven and ephemeral runs) the AWS Lambda are itself very limited environments. They use Amazon Linux 2 (a fork of Red Hat Enterprise Linux) with addition of the language tool that is used for particular image (python, ruby, node, etc.). If we want to add additional binaries, we have a few options: create a custom docker image, use custom boot script or use Lambda `Layer`. The benefit over using `Layer`, is that we are not charged for initial duration of the "cold" phase.
 
