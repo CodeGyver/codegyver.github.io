@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Combine and Number PDF Pages with Ghostscript
+redirect_from:
+  - /2022/05/09/ghostscript/
 ---
 
 Ghostscript is an excellent interpreter for Postscript and Pdf files. It is installed on almost all modern Linux distributions per default.

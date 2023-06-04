@@ -17,6 +17,7 @@ sass:
   sass_dir: css/vendor
   style: compressed
 plugins:
+  - jekyll-redirect-from
   - jekyll-seo-tag
   - jekyll-sitemap
 
