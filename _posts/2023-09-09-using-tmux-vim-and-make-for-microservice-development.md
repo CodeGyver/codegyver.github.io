@@ -25,7 +25,7 @@ One alternative to Docker is make, specifically GNU Make. GNU Make is a powerful
 
 ## Makefile
 
-Let's assume we have a Ruby on Rails application that is started with the command `bundle exec rails c -p 3001` (which starts the Rails server on port 3001) and a JavaScript server. The recipe could be written as follows:
+Let's assume we have a Ruby on Rails application that is started with the command `bundle exec rails c -p 3001` (which starts the Rails server on port 3001) and a JavaScript builder. The recipe could be written as follows:
 
 `Makefile`
 
@@ -116,7 +116,7 @@ The script mentioned above should be executed with the Makefile directory as its
 
 ### Multi-Application runner
 
-After defining the runners for all the applications we want to run simultaneously, we can further refine the `dev.sh` script:
+After defining the runners for all the applications we want to run simultaneously, we can further refine the `dev_all.sh` script:
 
 `dev_all.sh`
 
