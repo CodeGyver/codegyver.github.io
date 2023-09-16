@@ -11,8 +11,6 @@ Microservices, due to their modular nature, offer both opportunities and challen
 The full code described in this article can be found <a href="https://github.com/zpieslak/scripts/tree/main/dev">here</a>.
 </p>
 
-## Combine files
-
 ## Development issues with microservice architecture
 
 The outcome of a microservice architecture is a highly modularized application that often spans multiple version control repositories, such as git. Each application comes with its own setup, runner, and database. To perform integration tests, multiple micro-applications often need to run simultaneously. This introduces a practical issue: how can you run each application with its unique internal setup, especially when each has its own port, runner flags, and potentially multiple runner threads? Continually referring to a README (if one exists) or trying to remember each setup might not be efficient.
