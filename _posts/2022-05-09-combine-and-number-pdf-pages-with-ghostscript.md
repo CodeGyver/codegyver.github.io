@@ -5,40 +5,39 @@ redirect_from:
   - /2022/05/09/ghostscript/
 ---
 
-Ghostscript is an excellent interpreter for Postscript and Pdf files. It is installed on almost all modern Linux distributions per default.
+Ghostscript is an excellent interpreter for PostScript and PDF files and is installed by default on almost all modern Linux distributions.
 
-
-In this article, I would like to present how to unify multiple Pdfs into one file, create a bookmarks list inside it and add page numbers on each page of the generated document.
+In this article, I will present how to unify multiple PDFs into one file, create a bookmarks list within it, and add page numbers to each page of the generated document.
 
 <!--more-->
 
 <p class="message">
-At the time of writing, the current ghostscript version is 9.56.1. Full code described in the article, can be found <a href="https://github.com/zpieslak/scripts/tree/main/gs">here</a>.
+As of this writing, the current version of Ghostscript is 9.56.1. The full code described in the article can be found <a href="https://github.com/zpieslak/scripts/tree/main/gs">here</a>.
 </p>
 
 ## Combine files
 
-Firstly let's start with combining Pdfs into one file. It is relatively easy and can be done with the following command:
+First, let's start with combining PDFs into one file. This task is relatively easy and can be accomplished using the following command:
 
     gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=output.pdf first_input.pdf second_input.pdf
 
-Where `-dNOPAUSE` and `-dBATCH` disables interactive prompts, `-sDEVICE` chooses a so-called output device (all ghostscript devices can be found [here](https://www.ghostscript.com/doc/current/Use.htm#Output_device)) and `-sOutputFile` sends the output to file. Full [reference](https://www.ghostscript.com/doc/current/Use.htm).
+The options `-dNOPAUSE` and `-dBATCH` disable interactive prompts, `-sDEVICE` selects an output device (a list of all Ghostscript devices can be found [here](https://ghostscript.com/docs/9.56.1/Devices.htm)) and `-sOutputFile` directs the output to file. For additional information, refer to the [full reference](https://ghostscript.com/docs/9.56.1/Readme.htm).
 
 ## Pdf bookmarks
 
-Once we know how to combine the files, let's continue with generating the Pdf bookmarks. In order to generate bookmark in combined Pdf, we need to know what will be the position (page) of the bookmark in the combined file. This can be done, by simple calculating the number of the pages of each Pdf input.
+Now that we know how to combine the files, let's proceed with generating the PDF bookmarks. To generate bookmarks in the combined PDF, we need to determine the position (page) of each bookmark in the combined file. This can be accomplished by simply calculating the number of pages in each input PDF.
 
-The following command takes an input file `first_input.pdf` and outputs the number of pages to stdout.
+The following command takes an input file `first_input.pdf` and outputs the number of pages to the standard output (stdout).
 
     gs -dQUIET -dNODISPLAY --permit-file-read=first_input.pdf -c "(first_input.pdf) (r) file runpdfbegin pdfpagecount = quit"
 
-Where `-dQUIET` removes any standard stdout comments, produced by ghostscript, `-dNODISPLAY` runs with null device, `--permit-file-read=first_input.pdf` gives ghostscript permission to read the input file, `-c` allows running PostScript code in commandline, instead of providing a file. `runpdfbegin` and `pdfpagecount` are PostScript procedures, provided by ghostscript ([reference](https://github.com/ArtifexSoftware/ghostpdl/blob/1149c5ab914c7695caa8951bb8213f4241c51104/Resource/Init/pdf_main.ps)).
+Here, `-dQUIET` suppresses standard stdout comments produced by Ghostscript; `-dNODISPLAY` runs Ghostscript with a null device; `--permit-file-read=first_input.pdf` grants Ghostscript read permission for the input file; and `-c` allows the execution of PostScript code from the command line, negating the need to provide a file. Both `runpdfbegin` and `pdfpagecount` are PostScript procedures provided by Ghostscript. For more details, refer to the [reference](https://github.com/ArtifexSoftware/ghostpdl/blob/1149c5ab914c7695caa8951bb8213f4241c51104/Resource/Init/pdf_main.ps)).
 
-Another property we may need from input file is its title (for example to provide it as boookmark title). This can be done with following command:
+Another property we may need from the input file is its title (for example, to use it as the bookmark title). This can be achieved with the following command:
 
     gs -dBATCH -dQUIET -dPDFINFO -dNODISPLAY first_input.pdf 2>&1 | grep "Title: " | awk -F ': ' '{ print $NF }'
 
-Once we know what will be the position of the input file, we can generate Pdf bookmarks. Plus, it would be nice to add new metadata to the generated file. An example PostScript code would look as below:
+Once we determine the position of the input file, we can generate PDF bookmarks. Additionally, it would be beneficial to add new metadata to the generated file. An example of PostScript code would look like the following:
 
     % Main file metadata
     [ /Title (My Title for output pdf)
@@ -56,13 +55,13 @@ Once we know what will be the position of the input file, we can generate Pdf bo
       /Title (My Title for second input pdf)
       /OUT pdfmark
 
-We can provide this code either by `-c` option (as described earlier) or by providing a separate file. In this example we saved it as `bookmark.ps`.
+We can supply this code using the `-c` option (as described earlier) or by providing it within a separate file. In this example, it’s saved as `bookmark.ps`.
 
     gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=output.pdf bookmark.ps first_input.pdf second_input.pdf
 
 ## Page numbers
 
-The last thing (and the most complex) is to add page numbers to each page of the output edf. Preferably, page number should be added to the right bottom of the page. The example PostScript code would look like:
+The final, and most complex, step is to add page numbers to each page of the output PDF. Ideally, the page number should be placed at the bottom right of the page. Example PostScript code would look as follows:
 
     % Set PageCount
     globaldict /PageCount 1 put
@@ -93,7 +92,7 @@ The last thing (and the most complex) is to add page numbers to each page of the
     >>
     setpagedevice
 
-If we save the above code as `pages.ps`. The full command would look like this:
+If we save the above code as `pages.ps`, the full command would look like this:
 
     gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=output.pdf bookmark.ps pages.ps first_input.pdf second_input.pdf
 
@@ -101,7 +100,7 @@ Full PostScript reference can be found [here](https://www.adobe.com/jp/print/pos
 
 ## Wrapping up
 
-Taking all the solutions above, we can create a simple bash script that will take Pdf files as input and output the merged Pdf.
+By integrating all the above solutions, we can create a simple Bash script that will accept PDF files as input and produce a merged PDF as output.
 
     #!/bin/bash
 
