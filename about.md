@@ -9,7 +9,7 @@ My name is Zbigniew Pieślak. I'm senior software engineer with {{ site.time | d
 
 My main area of expertise is:
 
-* Architect, develop, and implement web applications, targeted for different industries (medical, finance, media, and others).
+* Architect, develop, and implement web applications, targeted for different industries (medical, finance, media, and others)
 * Test and behavior driven development (Ruby, Python, Node)
 * Amazon AWS solutions (design and implementation)
 * SQL and NoSQL Databases (design and implementation)
