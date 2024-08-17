@@ -251,4 +251,4 @@ The following entry can be added to the firewall configuration.
 
 ## Conclusion
 
-Opening a home assistant to global accessibility can be incredibly convenient, as it enables us to monitor and manage our setup from virtually anywhere. Leveraging techniques such as DNS spoofing and SSL user certificate authentication can ensure a secure and efficient connection. This way, transitioning between Wi-Fi and cellular networks can occur nearly seamlessly.
+Opening my home assistant to remote access allowed me to monitor and control the setup from anywhere. Even with remote access, the setup remains secure thanks to SSL user certificate authentication, while DNS spoofing ensures a smooth transition between Wi-Fi and cellular networks, offering an advantage over VPN-based solutions.

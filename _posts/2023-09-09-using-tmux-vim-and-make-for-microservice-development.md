@@ -3,7 +3,7 @@ layout: post
 title: Using tmux, vim, and make for microservice development
 ---
 
-Microservices, due to their modular nature, offer both opportunities and challenges. To develop efficiently in such an environment, choosing the right toolset is crucial. In this post, I’ll explore the practical applications of tmux, vim, and GNU make in the context of microservice development.
+In this article, I will share my approach to developing microservices using tmux, vim, and make. My goal is to automate the process of running multiple applications locally, each with its own unique setup, runner, and database, on a daily basis.
 
 <!--more-->
 
@@ -13,15 +13,15 @@ The full code described in this article can be found <a href="https://github.com
 
 ## Development issues with microservice architecture
 
-The outcome of a microservice architecture is a highly modularized application that often spans multiple version control repositories, such as git. Each application comes with its own setup, runner, and database. To perform integration tests, multiple micro-applications often need to run simultaneously. This introduces a practical issue: how can you run each application with its unique internal setup, especially when each has its own port, runner flags, and potentially multiple runner threads? Continually referring to a README (if one exists) or trying to remember each setup might not be efficient.
+A microservice architecture results in a highly modular application, often spread across multiple git repositories. Each service comes with its own setup, runner, and database. If we want to perform integration tests, multiple microservices often need to run at the same time. This creates a practical challenge: how do you run each service with its unique setup, especially when they use different ports, runner flags, and sometimes multiple threads?
 
-### Docker compose
+### Docker
 
-One solution is to wrap them in Docker files and define their run recipes in bash scripts that execute the Docker images, or in Docker Compose files. However, in my opinion, this approach might be overkill in many cases. It could be bypassed in favor of launching the application's runner directly on the native machine.
+One approach to this problem is to wrap the setup for each service in a Docker container and orchestrate them with Docker Compose. This method is common and works well in many cases.
 
 ### GNU make
 
-One alternative to Docker is make, specifically GNU Make. GNU Make is a powerful tool primarily used for automating the build process of software projects. It employs Makefile scripts to determine which parts of a program need recompilation and provides a set of rules to generate target outputs from source files. In our case, we won't use it for compilation but rather for executing bash commands. The benefit of using make is its ability to define multiple recipes within a single Makefile, with each recipe representing a distinct task or command.
+An alternative I want to discuss is GNU Make, a tool typically used for automating software builds. Instead of compiling code, we'll use it to execute bash commands. A key feature of make is its ability to define multiple tasks within a single Makefile, each corresponding to a specific command.
 
 ## Makefile
 
@@ -35,7 +35,7 @@ Let's assume we have a Ruby on Rails application that is started with the comman
     js:
         yarn build --watch
 
-When we execute the recipe using the command `make -j`, it runs all recipes (`rails` and `js`) in parallel, displaying the output in the current terminal window. While this approach achieves the basic goal of consolidating the application's runners into a single Makefile, we can enhance it further by using a terminal multiplexer.
+When we execute the recipe using the command `make -j`, it runs all recipes (`rails` and `js`) in parallel, displaying the output in the current terminal window. While this approach achieves the basic goal of consolidating the application’s runners into a single Makefile, we can enhance it further by using a terminal multiplexer.
 
 <video controls width="640" height="400">
   <source src="/videos/screencast_20230916T073411Z.mp4" type="video/mp4">
@@ -141,4 +141,4 @@ The script, `dev_all.sh`, can be executed during machine boot-up to run all our 
 
 ## Conclusions
 
-Automating microservice development with tmux, vim, and make boosts efficiency. Tmux handles multiple terminal windows and panes, vim offers advanced text editing, and make automates build and run commands. This setup eliminates the need to recall specific runner code, particularly in multi-app environments like microservices.
+Using tmux, vim, and make for automating microservice development has improved my efficiency. Tmux manages multiple terminal windows, vim provides powerful text editing, and make automates build and run commands. This setup eliminates the need to remember specific runner code, especially in multi-app environments like microservices.
