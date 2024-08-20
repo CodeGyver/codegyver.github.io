@@ -23,6 +23,8 @@ One approach to this problem is to wrap the setup for each service in a Docker c
 
 An alternative I want to discuss is GNU Make, a tool typically used for automating software builds. Instead of compiling code, we'll use it to execute bash commands. A key feature of make is its ability to define multiple tasks within a single Makefile, each corresponding to a specific command.
 
+The benefit over using Docker, in my opinion, is that `make` is more lightweight and runs natively. This is especially useful when you’re developing code with frequently changing dependencies that need to be updated often, although the application's hard dependencies, like Ruby or Node.js, would still need to be installed on the host machine.
+
 ## Makefile
 
 Let's assume we have a Ruby on Rails application that is started with the command `bundle exec rails c -p 3001` (which starts the Rails server on port 3001) and a JavaScript builder. The recipe could be written as follows:
