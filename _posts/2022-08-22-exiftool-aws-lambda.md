@@ -10,7 +10,7 @@ In this article I will present how to use it in disk and RAM limited environment
 <!--more-->
 
 <p class="message">
-The article describes code, which can be found <a href="https://github.com/zpieslak/exiftool-aws-lamdba">here</a>.
+The article describes code, which can be found <a href="https://github.com/zpieslak/exiftool-aws-lambda">here</a>.
 </p>
 
 ## AWS Lambda
@@ -109,7 +109,7 @@ Exiftool provides `-fast` flag, which forces executable to exit, as soon as it f
 
 The other feature we will use, is allow using `stdin` as input instead of file path. This will be useful for better manage the system cache (to not download the whole file at once from remote destination).
 
-Given we have a test file called [test.pdf](https://github.com/zpieslak/exiftool-aws-lamdba/blob/main/tests/fixtures/files/test.pdf), we can run the following code:
+Given we have a test file called [test.pdf](https://github.com/zpieslak/exiftool-aws-lambda/blob/main/tests/fixtures/files/test.pdf), we can run the following code:
 
     cat tests/fixtures/files/test.pdf | exiftool -fast -json -
 
@@ -191,7 +191,7 @@ To retrieve the file itself, we will use [S3 GETObject](https://docs.aws.amazon.
             stdout.decode()
         )[0]
 
-Full working code, can be found [here](https://github.com/zpieslak/exiftool-aws-lamdba).
+Full working code, can be found [here](https://github.com/zpieslak/exiftool-aws-lambda).
 
 ## Conclusion
 
