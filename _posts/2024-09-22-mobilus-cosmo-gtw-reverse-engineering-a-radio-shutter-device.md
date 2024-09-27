@@ -3,7 +3,9 @@ layout: post
 title: "Mobilus Cosmo GTW: Reverse Engineering a Radio Shutter Device"
 ---
 
-Here, I will present my findings from reverse-engineering a radio shutter device, the Mobilus Cosmo GTW. This device is used to control the opening and closing of roller radio shutters. In this article, I will describe my motivation, how I approached the problem, what tools I used, and how I managed to create a native Python client to control the device.
+Here, I will present my findings from reverse-engineering a radio shutter device, the Mobilus Cosmo GTW. This device is used to control the opening and closing of roller radio shutters.
+
+In this article, I will describe my motivation, how I approached the problem, what tools I used, and how I managed to create a native Python client to control the device.
 
 <!--more-->
 
@@ -13,7 +15,7 @@ The full code described in this article can be found <a href="https://github.com
 
 ## Motivation
 
-As a smart home fan and an owner of radio shutters, I was looking for a way to control them remotely. The ideal solution would be to integrate the shutters with my Home Assistant installation so I could control them through the HA web interface or mobile app. Then I could group the shutters or create automations to control them based on the time of day, weather, or other conditions.
+As a smart home fan and an owner of radio shutters, I was looking for a way to control them remotely. The ideal solution would be to integrate the shutters with my Home Assistant installation so I could control them through its web interface or mobile app. Then I could group the shutters or create automations to control them based on the time of day, weather, or other conditions.
 
 Unfortunately, the shutters I have are controlled by a proprietary radio protocol, which is not supported by any of the existing integrations. What's more, the manufacturer does not provide any API or SDK to control the shutters. The only way to control them is by using the remote control that comes with the shutters or through the web interface provided by the Mobilus Cosmo GTW (a device also provided by the manufacturer).
 
@@ -41,7 +43,7 @@ As shown in the diagram above, the communication is inefficient. The signal has 
 
 ## Second Approach
 
-Since the first solution was not stable and there were no alternative solutions available, I decided to reverse-engineer the communication between the Mobilus Cosmo GTW and the shutters. The idea was to create a native Python client that would communicate directly with the Mobilus Cosmo GTW, without the need for Google Home or Home Assistant. Then the client can be used as a base for a custom Home Assistant plugin.
+Since the first solution was not stable and there were no alternative solutions available, I decided to reverse-engineer the communication between the Mobilus Cosmo GTW and the shutters. The idea was to create a native Python client that would communicate directly with the Mobilus Cosmo GTW, without the need for Google Home or remote connection. Then the client can be used as a base for a custom Home Assistant plugin.
 
 ## Reverse-engineering
 
@@ -158,7 +160,7 @@ The `eslint.config.mjs` file contained the following configuration:
 
 ### Inspecting the JavaScript Code
 
-After investigating the code, trial and error, and a lot of console logs, I was able to find out the following things:
+After investigating the code, running through trial and error, and using a lot of console logs, I was able to come to the following conclusions.
 
 1. The WebSocket protocol was used to communicate with the back-end MQTT server.
 2. The messages consisted of two parts: an unencrypted header, which contained message metadata, and an encrypted body.
