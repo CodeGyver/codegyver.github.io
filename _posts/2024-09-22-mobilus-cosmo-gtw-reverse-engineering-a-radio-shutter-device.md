@@ -173,4 +173,4 @@ When creating the client, I tried to use minimal external libraries. For the MQT
 
 ## Conclusions
 
-The reverse-engineering process was a great learning experience. I was able to learn how the Mobilus Cosmo GTW works, how the communication works, and how to create a native Python client to control the shutters. The client can be used as a base for a custom Home Assistant plugin, which will allow me to control the shutters directly from the Home Assistant web interface or mobile app.
+The reverse-engineering process was a great learning experience. I was able to learn how the Mobilus Cosmo GTW works, how to trick the embedded system using a reverse proxy, and how to create a native Python client to control the shutters. The client can be used as a base for a custom Home Assistant plugin, which will allow me to control the shutters directly from the Home Assistant web interface or mobile app.
